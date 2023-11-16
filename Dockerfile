@@ -16,7 +16,7 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy the built app from the builder stage to the nginx public directory
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=build-step /app/build /usr/share/nginx/html
 
 EXPOSE 80
 
