@@ -14,7 +14,7 @@ FROM nginx:latst
 
 WORKDIR /usr/share/nginx/html
 
-COPY --from=build /app/build ./
+COPY --from=build /app ./
 
 EXPOSE 80
 
