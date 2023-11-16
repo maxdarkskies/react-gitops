@@ -6,7 +6,7 @@ COPY package*.json ./
 
 RUN npm install
 
-COPY . .
+COPY . /app
 
 RUN npm run build
 
@@ -16,7 +16,7 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy the built app from the builder stage to the nginx public directory
-COPY --from=build-step /app/build /usr/share/nginx/html
+COPY --from=bulder /app/build /usr/share/nginx/html
 
 EXPOSE 80
 
