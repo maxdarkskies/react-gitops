@@ -55,5 +55,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./
-          push: $${{ github.ref == 'refs/heads/master' }}
+          push: true
           tags: maxdarkskies/gitops:${{ github.sha }}
