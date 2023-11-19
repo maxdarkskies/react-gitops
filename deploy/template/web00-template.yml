@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: web00
-        image: ${{ env.IMG }}
+        image: 
         ports:
         - containerPort: 80
 ---
