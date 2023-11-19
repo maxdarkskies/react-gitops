@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: web00
-        image: docker.io/maxdarkses/gitops:65dfee8f17ceb82a85bee84ff3c858f4c22e4e79
+        image: maxdarkskies/gitops:98c76d7dfdacb789217af0c99c6c95197472d839
         ports:
         - containerPort: 80
 ---
