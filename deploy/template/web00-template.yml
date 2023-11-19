@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web00
+  namespaces: gitops
   labels:
     app: web00
 spec:
@@ -24,6 +25,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web00
+  namespaces: gitops
 spec:
   selector:
     app: web00

@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web00
+  namespaces: gitops
   labels:
     app: web00
 spec:
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
       - name: web00
-        image: maxdarkskies/gitops:98c76d7dfdacb789217af0c99c6c95197472d839
+        image: docker.io/maxdarkses/gitops:65dfee8f17ceb82a85bee84ff3c858f4c22e4e79
         ports:
         - containerPort: 80
 ---
@@ -24,6 +25,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web00
+  namespaces: gitops
 spec:
   selector:
     app: web00
