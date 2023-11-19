@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web00
+  labels:
+    app: web00
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web00
+  template:
+    metadata:
+      labels:
+        app: web00
+    spec:
+      containers:
+      - name: web00
+        image: ${{ IMG }}
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web00
+spec:
+  selector:
+    app: web00
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80          # The port on the service
+      targetPort: 80  # The port on the pods selected by the service
+      nodePort: 30001   # The port on the nodes
