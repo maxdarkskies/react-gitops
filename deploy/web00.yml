@@ -1,0 +1,40 @@
+<<<<<<< HEAD
+=======
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web00
+  namespaces: gitops
+  labels:
+    app: web00
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web00
+  template:
+    metadata:
+      labels:
+        app: web00
+    spec:
+      containers:
+      - name: web00
+        image: maxdarkskies/gitops:f76aba4aa51bb36d9e12a3f572f2bd19eea3bc00
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web00
+  namespaces: gitops
+spec:
+  selector:
+    app: web00
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80          # The port on the service
+      targetPort: 80  # The port on the pods selected by the service
+      nodePort: 30001   # The port on the nodes
+>>>>>>> f7cef366f5432a1b73d30c3352e7528b204ad9db
