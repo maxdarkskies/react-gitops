@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web00
+  labels:
+    app: web00
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web00
+  template:
+    metadata:
+      labels:
+        app: web00
+    spec:
+      containers:
+      - name: web00
+        image: maxdarkskies/gitops:5b3c041a6f9ec6c5382c61bce5bbe0fd1f42df64
+        ports:
+        - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web00
+spec:
+  type: NodePort
+  selector:
+    app: web00
+  ports:
+    - port: 80
+      # By default and for convenience, the `targetPort` is set to
+      # the same value as the `port` field.
+      targetPort: 80
+      # Optional field
+      # By default and for convenience, the Kubernetes control plane
+      # will allocate a port from a range (default: 30000-32767)
+      nodePort: 30001
