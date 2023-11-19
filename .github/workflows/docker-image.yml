@@ -74,7 +74,7 @@ jobs:
       - name: Update docker image
         run: |
           cp deploy/template/web00-template.yml deploy/web00.yml
-          sed -i 's|image: ${{ env.IMG }}|image: ${{ env.REPO }}/${{ env.IMG_URL }}:${{ github.sha }}|g' deploy/web00.yaml
+          sed -i 's|image: ${{ env.IMG }}|image: ${{ env.REPO }}/${{ env.IMG_URL }}:${{ github.sha }}|g' deploy/web00.yml
 
       - name: Set up Git
         run: |
