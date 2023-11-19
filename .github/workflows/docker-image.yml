@@ -71,12 +71,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-
       - name: Update docker image
         run: |
           cp deploy/template/web00-template.yml deploy/web00.yml
           sed -i 's|image: ${{ env.IMG }}|image: ${{ env.REPO }}/${{ env.IMG_URL }}:${{ github.sha }}|g' deploy/web00.yaml
 
-        
+      - name: Set up Git
+        run: |
+          git config --global user.email "tiendat.itz@gmail.com"
+          git config --global user.name "dat vo"
+
+      - name: Commit and Push Changes
+        run: |
+          git add .
+          git commit -m "Automated commit via GitHub Actions"
+          git push
