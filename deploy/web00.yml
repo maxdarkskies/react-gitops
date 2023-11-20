@@ -6,7 +6,7 @@ metadata:
     app: web00
   namespace: react
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: web00
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: web00
-        image: docker.io/maxdarkskies/gitops:d3ad33b3985d67b17d316f4991538d2203c2d581
+        image: docker.io/maxdarkskies/gitops:5d09c2711b9a2f4b0edf2be258d1729c507ca958
         ports:
         - containerPort: 3000
 
