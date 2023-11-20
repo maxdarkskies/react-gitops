@@ -1,9 +1,10 @@
 FROM node:14 as bulder
 WORKDIR /app
-COPY package*.json ./
+COPY public/ /app/public
+COPY src/ /app/src
+COPY package.json /app/
 RUN npm install
-COPY . /app
-RUN npm run build
+CMD ["npm", "start"]
 EXPOSE 3000
 # FROM nginx:alpine
 
